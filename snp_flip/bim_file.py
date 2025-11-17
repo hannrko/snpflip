@@ -10,6 +10,6 @@ def read_bim_file(bim_file):
                                      "allele_1", "allele_2"],
                               dtype={"chromosome": str})
 
-    bim_table["position"] = bim_table.position - 1
+    bim_table["position"] = bim_table.position.astype(int) - 1
 
     return bim_table.set_index(["chromosome", "position"])
