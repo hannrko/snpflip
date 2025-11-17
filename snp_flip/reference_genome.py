@@ -74,7 +74,7 @@ def _check_for_N(snps, chromosome):
 def convert_fa_chromosome_names(fasta_dict):
 
     return {_convert_fa_name(k): fasta_dict[k] for k in fasta_dict.keys()
-            if _is_valid_chromosome(k) and (_convert_fa_name(k) if not None}
+            if _is_valid_chromosome(k) and (_convert_fa_name(k) if not None)}
 
 
 def _is_valid_chromosome(name):
