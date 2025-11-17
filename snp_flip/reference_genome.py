@@ -88,7 +88,7 @@ def _is_valid_chromosome(name):
 
 def _convert_fa_name(name):
 
-    bim_name = re.compile(r"(chr)?(?P<chr_symbol>\d+|X|Y|M)(?:T)?")
+    bim_name = re.compile(r"(chr)?(?P<chr_symbol>\d+|X|Y|M)(?:T)?\b", re.IGNORECASE)
     result = bim_name.match(name).group("chr_symbol")
 
     return result
