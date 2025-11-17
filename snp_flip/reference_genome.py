@@ -74,7 +74,7 @@ def _check_for_N(snps, chromosome):
 def convert_fa_chromosome_names(fasta_dict):
 
     return {_convert_fa_name(k): fasta_dict[k] for k in fasta_dict.keys()
-            if _is_valid_chromosome(k)}
+            if _is_valid_chromosome(k) and (_convert_fa_name(k) if not None}
 
 
 def _is_valid_chromosome(name):
@@ -89,9 +89,11 @@ def _is_valid_chromosome(name):
 def _convert_fa_name(name):
 
     bim_name = re.compile(r"(chr)?(?P<chr_symbol>\d+|X|Y|M)(?:T)?\b", re.IGNORECASE)
-    result = bim_name.match(name).group("chr_symbol")
-
-    return result
+    m = bim_name.match(name)
+    if m is None:
+        return None
+    else:
+        return m.group("chr_symbol")
 
 def _print_error_if_no_chromosome_overlap(genome_dict, bim_table):
 
